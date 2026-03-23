@@ -64,7 +64,11 @@ fn should_handle_window(hwnd: HWND) -> bool {
         let len = GetClassNameW(hwnd, &mut class_name);
         let class = String::from_utf16_lossy(&class_name[..len as usize]);
         // 排除桌面、任务栏、开始菜单等系统窗口
-        if class == "Progman" || class == "WorkerW" || class == "Shell_TrayWnd" || class == "Start"
+        if class == "Progman"
+            || class == "WorkerW"
+            || class == "Shell_TrayWnd"
+            || class == "Shell_SecondaryTrayWnd"
+            || class == "Start"
         {
             return false;
         }
